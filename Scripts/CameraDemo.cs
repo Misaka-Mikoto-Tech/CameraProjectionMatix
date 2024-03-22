@@ -80,7 +80,7 @@ public class CameraDemo : MonoBehaviour
     Vector3 GetPos(int lenType,Vector2Int dirType,Camera cam)
     {
         Vector3 cPos = cam.transform.position;
-        //根据FOV得到水平与垂直角度一般对应的弧度
+        //鏍规嵁FOV寰楀埌姘村钩涓庡瀭鐩磋搴︿竴鑸搴旂殑寮у害
         float vecAngle = (cam.fieldOfView*Mathf.PI)/360;
         float horAngle = Camera.VerticalToHorizontalFieldOfView(cam.fieldOfView, cam.aspect) * Mathf.PI/360;        
         float zoffset  = lenType == 0 ? cam.nearClipPlane : cam.farClipPlane;
@@ -106,14 +106,14 @@ public class CameraDemo : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //相机投影矩阵
+        //鐩告満鎶曞奖鐭╅樀
         Matrix4x4 mat = Gizmos.matrix;
         Gizmos.matrix = Matrix4x4.TRS(cam.transform.position, cam.transform.rotation, Vector3.one);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawFrustum(cam.transform.position, cam.fieldOfView, cam.farClipPlane, cam.transform.position.z, cam.aspect);
+        Gizmos.DrawFrustum(Vector3.zero, cam.fieldOfView, cam.farClipPlane, cam.transform.position.z, cam.aspect);
         Gizmos.color = Color.red;
-        Gizmos.DrawFrustum(cam.transform.position, cam.fieldOfView, cam.farClipPlane, cam.nearClipPlane, cam.aspect);
-        //点位绘制
+        Gizmos.DrawFrustum(Vector3.zero, cam.fieldOfView, cam.farClipPlane, cam.nearClipPlane, cam.aspect);
+        //鐐逛綅缁樺埗
         Gizmos.matrix = mat;
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(Vector3.zero, new Vector3(0, 0, 50));
@@ -121,7 +121,7 @@ public class CameraDemo : MonoBehaviour
         Gizmos.DrawLine(Vector3.zero, new Vector3(0, 50, 0));
         Gizmos.color = Color.red;
         Gizmos.DrawLine(Vector3.zero, new Vector3(50, 0, 0));
-        //视锥
+        //瑙嗛敟
 
 
 
