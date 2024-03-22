@@ -110,7 +110,7 @@ public class CameraDemo : MonoBehaviour
         Matrix4x4 mat = Gizmos.matrix;
         Gizmos.matrix = Matrix4x4.TRS(cam.transform.position, cam.transform.rotation, Vector3.one);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawFrustum(Vector3.zero, cam.fieldOfView, cam.farClipPlane, cam.transform.position.z, cam.aspect);
+        Gizmos.DrawFrustum(Vector3.zero, cam.fieldOfView, cam.farClipPlane, 0, cam.aspect);
         Gizmos.color = Color.red;
         Gizmos.DrawFrustum(Vector3.zero, cam.fieldOfView, cam.farClipPlane, cam.nearClipPlane, cam.aspect);
         //点位绘制
